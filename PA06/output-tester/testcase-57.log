@@ -1,0 +1,16 @@
+
+Testcase 57
+   Testing: SparseNode_remove(a5)
+   Built array a5:
+   (1,5)->(10,3)->(25,3)
+                        ->(11,-4)
+                ->(8,4)
+                       ->(4,-30)->(7,20)
+   Remove Node with index 10:
+   Program received signal SIGSEGV, Segmentation fault.
+   0x0000000000400aa7 in SparseArray_remove (array=0x6050f0, index=10) at answer06.c:162
+   162	  rmv->index = n->index;
+   #0  0x0000000000400aa7 in SparseArray_remove (array=0x6050f0, index=10) at answer06.c:162
+   #1  0x0000000000402ad0 in tests_SparseArray_remove (test_number=5) at testcases/test_SparseArray_remove.c:32
+   #2  0x0000000000403079 in main (argc=2, argv=0x7fffffffe4d8) at <stdin>:241
+Testcase FAILED. Log file saved to testcase-57.log

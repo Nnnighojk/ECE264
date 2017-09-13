@@ -1,0 +1,97 @@
+==8977== Memcheck, a memory error detector
+==8977== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==8977== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==8977== Command: ./a.out 47
+==8977== Parent PID: 8974
+==8977== 
+--8977-- 
+--8977-- Valgrind options:
+--8977--    --tool=memcheck
+--8977--    --leak-check=full
+--8977--    --verbose
+--8977--    --log-file=memcheck.log
+--8977-- Contents of /proc/version:
+--8977--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--8977-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--8977-- Page sizes: currently 4096, max supported 4096
+--8977-- Valgrind library directory: /usr/lib64/valgrind
+--8977-- Reading syms from /tmp/.62X4DO/a.out
+--8977-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--8977--    object doesn't have a dynamic symbol table
+--8977-- Reading syms from /lib64/ld-2.12.so
+--8977--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--8977--   .. build-id is valid
+--8977-- Scheduler: using generic scheduler lock implementation.
+--8977-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==8977== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8977-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==8977== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8977-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==8977== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8977-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==8977== 
+==8977== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8977== don't want to do, unless you know exactly what you're doing,
+==8977== or are doing some strange experiment):
+==8977==   /usr/lib64/valgrind/../../bin/vgdb --pid=8977 ...command...
+==8977== 
+==8977== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8977==   /path/to/gdb ./a.out
+==8977== and then give GDB the following command
+==8977==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=8977
+==8977== --pid is optional if only one valgrind process is running
+==8977== 
+--8977-- REDIR: 0x3c3fa176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--8977-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--8977-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--8977-- REDIR: 0x3c3fa174e0 (index) redirected to 0x4a07c30 (index)
+--8977-- REDIR: 0x3c3fa17560 (strcmp) redirected to 0x4a08570 (strcmp)
+--8977-- Reading syms from /lib64/libc-2.12.so
+--8977--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--8977--   .. build-id is valid
+--8977-- REDIR: 0x3c3fe84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--8977-- REDIR: 0x3c3fe86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--8977-- REDIR: 0x3c3fe82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--8977-- REDIR: 0x3c3fe8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--8977-- REDIR: 0x3c3fe84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--8977-- REDIR: 0x3c3fe7b520 (free) redirected to 0x4a063a9 (free)
+--8977-- REDIR: 0x3c3fe7a640 (malloc) redirected to 0x4a069ac (malloc)
+--8977-- REDIR: 0x3c3fe81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==8977== 
+==8977== HEAP SUMMARY:
+==8977==     in use at exit: 168 bytes in 7 blocks
+==8977==   total heap usage: 14 allocs, 7 frees, 240 bytes allocated
+==8977== 
+==8977== Searching for pointers to 7 not-freed blocks
+==8977== Checked 64,728 bytes
+==8977== 
+==8977== 24 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==8977==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==8977==    by 0x4006D8: SparseNode_create (answer06.c:16)
+==8977==    by 0x40072E: SparseArray_insert (answer06.c:29)
+==8977==    by 0x400C98: SparseArray_insert_sol (<stdin>:24)
+==8977==    by 0x400D2F: SparseArray_build_sol (<stdin>:39)
+==8977==    by 0x401A28: make_array (test_support_functions.c:148)
+==8977==    by 0x40277E: tests_SparseArray_getNode (test_SparseArray_getNode.c:26)
+==8977==    by 0x402F20: main (<stdin>:241)
+==8977== 
+==8977== 144 bytes in 6 blocks are definitely lost in loss record 2 of 2
+==8977==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==8977==    by 0x4006D8: SparseNode_create (answer06.c:16)
+==8977==    by 0x40072E: SparseArray_insert (answer06.c:29)
+==8977==    by 0x400CC5: SparseArray_insert_sol (<stdin>:27)
+==8977==    by 0x400D2F: SparseArray_build_sol (<stdin>:39)
+==8977==    by 0x401A28: make_array (test_support_functions.c:148)
+==8977==    by 0x40277E: tests_SparseArray_getNode (test_SparseArray_getNode.c:26)
+==8977==    by 0x402F20: main (<stdin>:241)
+==8977== 
+==8977== LEAK SUMMARY:
+==8977==    definitely lost: 168 bytes in 7 blocks
+==8977==    indirectly lost: 0 bytes in 0 blocks
+==8977==      possibly lost: 0 bytes in 0 blocks
+==8977==    still reachable: 0 bytes in 0 blocks
+==8977==         suppressed: 0 bytes in 0 blocks
+==8977== 
+==8977== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--8977-- 
+--8977-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--8977-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==8977== 
+==8977== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)

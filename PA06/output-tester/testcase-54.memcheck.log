@@ -1,0 +1,86 @@
+==12338== Memcheck, a memory error detector
+==12338== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==12338== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==12338== Command: ./a.out 53
+==12338== Parent PID: 12335
+==12338== 
+--12338-- 
+--12338-- Valgrind options:
+--12338--    --tool=memcheck
+--12338--    --leak-check=full
+--12338--    --verbose
+--12338--    --log-file=memcheck.log
+--12338-- Contents of /proc/version:
+--12338--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--12338-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--12338-- Page sizes: currently 4096, max supported 4096
+--12338-- Valgrind library directory: /usr/lib64/valgrind
+--12338-- Reading syms from /tmp/.ce3gY0/a.out
+--12338-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--12338--    object doesn't have a dynamic symbol table
+--12338-- Reading syms from /lib64/ld-2.12.so
+--12338--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--12338--   .. build-id is valid
+--12338-- Scheduler: using generic scheduler lock implementation.
+--12338-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==12338== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12338-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==12338== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12338-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==12338== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12338-by-nnighojk-on-ecegrid-thin4.ecn.purdue.edu
+==12338== 
+==12338== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12338== don't want to do, unless you know exactly what you're doing,
+==12338== or are doing some strange experiment):
+==12338==   /usr/lib64/valgrind/../../bin/vgdb --pid=12338 ...command...
+==12338== 
+==12338== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12338==   /path/to/gdb ./a.out
+==12338== and then give GDB the following command
+==12338==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=12338
+==12338== --pid is optional if only one valgrind process is running
+==12338== 
+--12338-- REDIR: 0x3c3fa176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--12338-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--12338-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--12338-- REDIR: 0x3c3fa174e0 (index) redirected to 0x4a07c30 (index)
+--12338-- REDIR: 0x3c3fa17560 (strcmp) redirected to 0x4a08570 (strcmp)
+--12338-- Reading syms from /lib64/libc-2.12.so
+--12338--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--12338--   .. build-id is valid
+--12338-- REDIR: 0x3c3fe84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--12338-- REDIR: 0x3c3fe86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--12338-- REDIR: 0x3c3fe82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--12338-- REDIR: 0x3c3fe8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--12338-- REDIR: 0x3c3fe84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--12338-- REDIR: 0x3c3fe7b520 (free) redirected to 0x4a063a9 (free)
+--12338-- REDIR: 0x3c3fe7a640 (malloc) redirected to 0x4a069ac (malloc)
+--12338-- REDIR: 0x3c3fe81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==12338== 
+==12338== HEAP SUMMARY:
+==12338==     in use at exit: 168 bytes in 7 blocks
+==12338==   total heap usage: 18 allocs, 11 frees, 392 bytes allocated
+==12338== 
+==12338== Searching for pointers to 7 not-freed blocks
+==12338== Checked 64,728 bytes
+==12338== 
+==12338== 168 (24 direct, 144 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 7
+==12338==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==12338==    by 0x4006CB: SparseNode_create (answer06.c:8)
+==12338==    by 0x400DCB: SparseArray_insert_sol (<stdin>:21)
+==12338==    by 0x400E87: SparseArray_build_sol (<stdin>:39)
+==12338==    by 0x401B32: make_array (test_support_functions.c:146)
+==12338==    by 0x402A75: tests_SparseArray_remove (test_SparseArray_remove.c:26)
+==12338==    by 0x403078: main (<stdin>:241)
+==12338== 
+==12338== LEAK SUMMARY:
+==12338==    definitely lost: 24 bytes in 1 blocks
+==12338==    indirectly lost: 144 bytes in 6 blocks
+==12338==      possibly lost: 0 bytes in 0 blocks
+==12338==    still reachable: 0 bytes in 0 blocks
+==12338==         suppressed: 0 bytes in 0 blocks
+==12338== 
+==12338== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--12338-- 
+--12338-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--12338-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==12338== 
+==12338== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

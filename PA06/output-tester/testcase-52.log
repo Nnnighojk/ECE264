@@ -1,0 +1,16 @@
+
+Testcase 52
+   Testing: SparseNode_remove(a0)
+   Built array a0:
+   (1,5)->(3,3)->(8,4)
+        ->(0,6)
+   Remove Node with index 0:
+   Student result after remove:
+   (1,5)->(3,3)->(8,4)
+        ->(0,6)
+   Solution result after remove:
+   (1,5)->(3,3)->(8,4)
+   Checking if result tree is the same...
+   Memory errors detected.
+   Valgrind log saved in output-tester/testcase-52.memcheck.log.
+Testcase FAILED. Log file saved to testcase-52.log

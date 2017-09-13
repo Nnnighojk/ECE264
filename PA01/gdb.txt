@@ -1,0 +1,2 @@
+Undefined command: "gdb".  Try "help".
+Undefined command: "gdb".  Try "help".
